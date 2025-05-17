@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  username     String    @unique
+  email        String    @unique
+  password     String
+  name         String?   @db.VarChar(50)
+  bio          String?   @db.VarChar(160)
+  profileImage String?
+  coverImage   String?
+  website      String?   @db.VarChar(100)
+  location     String?   @db.VarChar(30)
+  birthDate    DateTime?
+  isVerified   Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  // Relations
+  tweets        Tweet[]
+  likes         Like[]
+  bookmarks     Bookmark[]
+  notifications Notification[] @relation("NotificationRecipient")
+  following     Follow[]       @relation("Following")
+  followers     Follow[]       @relation("Follower")
+
+  @@index([username])
+}
+
+model Tweet {
+  id        Int      @id @default(autoincrement())
+  content   String
+  images    String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Stats (denormalized for performance)
+  likeCount  Int @default(0)
+  replyCount Int @default(0)
+
+  // Relations
+  userId        Int
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parentId      Int?
+  parent        Tweet?         @relation("Replies", fields: [parentId], references: [id], onDelete: SetNull)
+  replies       Tweet[]        @relation("Replies")
+  likes         Like[]
+  bookmarks     Bookmark[]
+  notifications Notification[]
+
+  @@index([userId])
+  @@index([parentId])
+  @@index([createdAt])
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId  Int
+  user    User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tweetId Int
+  tweet   Tweet @relation(fields: [tweetId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, tweetId])
+  @@index([userId])
+  @@index([tweetId])
+}
+
+model Bookmark {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId  Int
+  user    User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tweetId Int
+  tweet   Tweet @relation(fields: [tweetId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, tweetId])
+  @@index([userId])
+  @@index([tweetId])
+}
+
+model Notification {
+  id        Int              @id @default(autoincrement())
+  type      NotificationType
+  message   String
+  read      Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  // Who receives the notification
+  userId Int
+  user   User @relation("NotificationRecipient", fields: [userId], references: [id], onDelete: Cascade)
+
+  // Related tweet (optional)
+  tweetId Int?
+  tweet   Tweet? @relation(fields: [tweetId], references: [id], onDelete: Cascade)
+
+  // Who triggered the notification (for LIKE, FOLLOW, etc.)
+  sourceUserId Int?
+
+  @@index([userId])
+  @@index([tweetId])
+  @@index([createdAt])
+}
+
+model Follow {
+  followerId  Int
+  followingId Int
+  createdAt   DateTime @default(now())
+
+  // Relations
+  follower  User @relation("Follower", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation("Following", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@id([followerId, followingId])
+  @@index([followerId])
+  @@index([followingId])
+}
+
+enum NotificationType {
+  LIKE
+  REPLY
+  FOLLOW
+  MENTION
+  RETWEET
+}
