@@ -14,7 +14,7 @@ import { LogoutButton } from './auth/logout-button';
 
 export const HomeFeed = () => {
   const { data: session } = useSession();
-  const [activeTab, setActiveTab] = useState('for-you');
+  const [, setActiveTab] = useState('for-you');
   const { onOpen: openRegister } = useSignUpDialog();
   const { onOpen } = useLoginDialog();
 

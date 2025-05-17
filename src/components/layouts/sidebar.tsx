@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
-import { Home, Search, Bell, Bookmark, User, MoreHorizontal, Twitter, Moon, Sun } from 'lucide-react';
+import { Home, Search, Bell, Bookmark, User, Twitter, Moon, Sun } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { useCurrentUser } from '@/hooks/use-current-user';

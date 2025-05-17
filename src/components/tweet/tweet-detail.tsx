@@ -6,7 +6,6 @@ import { ArrowLeft } from 'lucide-react';
 
 import { useTweet } from '@/features/tweet/queries';
 
-import { TweetPost } from '@/components/tweet/tweet';
 import { TweetComposer } from '@/components/tweet/tweet-composer';
 import { TweetSkeleton } from '@/components/tweet/tweet-skeleton';
 
@@ -59,11 +58,14 @@ export const TweetDetail = ({ id }: TweetDetailProps) => {
 
             {tweet?.images.length && (
               <div className='mt-3 rounded-xl overflow-hidden'>
+                {/* TODO: fix */}
                 {tweet?.images.map((img: string, index: number) => (
-                  <img
+                  <Image
                     key={index}
                     src={img || '/placeholder.svg'}
                     alt='Tweet media'
+                    fill
+                    style={{ objectFit: 'cover' }}
                     className='w-full h-auto object-cover'
                   />
                 ))}

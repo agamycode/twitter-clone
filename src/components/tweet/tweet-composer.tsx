@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { ImageIcon, MapPin, Calendar, Smile, X, Loader2 } from 'lucide-react';
 
@@ -59,7 +60,14 @@ export const TweetComposer = () => {
             <div className={`grid gap-2 my-2 ${uploadedImages.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
               {uploadedImages.map((img, index) => (
                 <div key={index} className='relative rounded-xl overflow-hidden'>
-                  <img src={img || '/placeholder.svg'} alt='Uploaded content' className='w-full h-auto' />
+                  {/* TODO: fix */}
+                  <Image
+                    src={img || '/placeholder.svg'}
+                    alt='Uploaded content'
+                    width={300}
+                    height={200}
+                    className='w-full h-auto'
+                  />
                   <Button
                     size='icon'
                     variant='secondary'

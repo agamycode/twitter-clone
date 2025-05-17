@@ -87,12 +87,15 @@ export const TweetPost = ({ tweet }: TweetProps) => {
               className={`mt-3 grid gap-2 rounded-xl overflow-hidden ${
                 images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'
               }`}>
+                {/* TODO: */}
               {images.map((img, index) => (
-                <img
+                <Image
                   key={index}
                   src={img || '/placeholder.svg'}
                   alt='Tweet media'
                   className='w-full h-auto object-cover'
+                  fill
+                  style={{ objectFit: 'cover' }}
                 />
               ))}
             </div>

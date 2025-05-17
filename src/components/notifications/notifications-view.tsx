@@ -21,7 +21,7 @@ export const NotificationsView = () => {
       setNotifications([
         {
           id: 1,
-          type: 'like',
+          type: 'LIKE',
           user: {
             name: 'Jane Smith',
             username: 'janesmith',
@@ -33,7 +33,7 @@ export const NotificationsView = () => {
         },
         {
           id: 2,
-          type: 'retweet',
+          type: 'RETWEET',
           user: {
             name: 'John Doe',
             username: 'johndoe',
@@ -45,7 +45,7 @@ export const NotificationsView = () => {
         },
         {
           id: 3,
-          type: 'follow',
+          type: 'FOLLOW',
           user: {
             name: 'Tech News',
             username: 'technews',
@@ -56,7 +56,7 @@ export const NotificationsView = () => {
         },
         {
           id: 4,
-          type: 'mention',
+          type: 'MENTION',
           user: {
             name: 'React Dev',
             username: 'reactdev',
@@ -167,7 +167,7 @@ export const NotificationsView = () => {
               ) : (
                 <>
                   {notifications
-                    .filter((notification) => notification.type === 'mention')
+                    .filter((notification) => notification.type === 'MENTION')
                     .map((notification) => (
                       <div key={notification.id} className='p-4 hover:bg-muted/30 flex'>
                         <div className='mr-3 mt-1'>
@@ -203,7 +203,7 @@ export const NotificationsView = () => {
                 </>
               )}
 
-              {!loading && notifications.filter((notification) => notification.type === 'mention').length === 0 && (
+              {!loading && notifications.filter((notification) => notification.type === 'MENTION').length === 0 && (
                 <div className='text-center py-10'>
                   <p className='text-lg font-semibold'>No mentions yet</p>
                   <p className='text-muted-foreground'>When someone mentions you, you&apos;ll find it here.</p>

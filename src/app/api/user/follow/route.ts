@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { auth } from '@/auth';
 import { getFollowByUsers } from '@/data/follow';
-import { NotificationType } from '../../../../../generated/prisma';
+import { NotificationType } from '@prisma/client';
 
 export async function POST(req: NextRequest) {
   try {

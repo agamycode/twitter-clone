@@ -9,7 +9,13 @@ import { TweetList } from '@/components/tweet/tweet-list';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export const ExploreView = () => {
-  const [trendingTopics, setTrendingTopics] = useState<any[]>([]);
+  const [trendingTopics, setTrendingTopics] = useState<
+    Array<{
+      category: string;
+      title: string;
+      tweets: string;
+    }>
+  >([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -76,7 +82,7 @@ export const ExploreView = () => {
         </TabsContent>
 
         <TabsContent value='trending' className='mt-0'>
-          <TweetList type='for-you' />
+          <TweetList />
         </TabsContent>
       </Tabs>
     </div>
