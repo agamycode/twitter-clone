@@ -26,7 +26,7 @@ export async function GET() {
       }
     });
 
-    return NextResponse.json({ data: notifications });
+    return NextResponse.json(notifications);
   } catch (error) {
     console.error('GET_NOTIFICATIONS_ERROR', error);
     return NextResponse.json({ message: 'Something went wrong' }, { status: 500 });

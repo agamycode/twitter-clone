@@ -4,7 +4,6 @@ import type React from 'react';
 import { toast } from 'sonner';
 import { useTransition } from 'react';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { login } from '@/actions/login';
@@ -25,7 +24,6 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
 export function LoginDialog() {
-  const router = useRouter();
   const { onOpen: openRegister } = useSignUpDialog();
   const { isOpen, onClose } = useLoginDialog();
 
@@ -46,14 +44,14 @@ export function LoginDialog() {
           if (data?.success === false) {
             toast.error(data.massage);
             form.reset();
-            router.refresh();
+            window.location.reload();
           }
 
           if (data?.success === true) {
             toast.success(data.massage);
             form.reset();
             onClose();
-            router.refresh();
+            window.location.reload();
           }
         })
         .catch(() => toast.error('Something went wrong'));

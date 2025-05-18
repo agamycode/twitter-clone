@@ -28,7 +28,7 @@ export const login = async (values: Login) => {
       password,
       redirect: false
     });
-    revalidatePath('/');
+    revalidatePath('/', 'layout');
     return { success: true, massage: 'Login successful!' };
   } catch (error) {
     if (error instanceof AuthError) {

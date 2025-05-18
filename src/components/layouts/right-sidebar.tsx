@@ -8,7 +8,7 @@ import { useUsers } from '@/features/user/queries';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Skeleton } from '../ui/skeleton';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export function RightSidebar() {
   const { users, isPending } = useUsers();
@@ -94,7 +94,7 @@ export function RightSidebar() {
           </div>
           <Link
             href={'/i/connect_people'}
-            className='h-9 px-4 py-2 w-full inline-flex items-center justify-start mt-2 text-[#1d9bf0] hover:text-[#1d9bf0]/90 text-sm font-medium'>
+            className='h-9 px-4 py-2 w-full inline-flex items-center justify-start mt-2 text-primary hover:text-primary/90 text-sm font-medium'>
             Show more
           </Link>
         </div>

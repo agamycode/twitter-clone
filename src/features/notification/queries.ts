@@ -17,7 +17,7 @@ export const useNotifications = () => {
     queryKey: notificationKeys.lists(),
     queryFn: () => notificationClient.all()
   });
-  return { users: data ?? [], isPending, isError, refetch };
+  return { notifications: data ?? [], isPending, isError, refetch };
 };
 
 export const useMarkAllAsRead = () => {

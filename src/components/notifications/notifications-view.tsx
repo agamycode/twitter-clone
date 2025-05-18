@@ -2,84 +2,26 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { format } from 'date-fns';
 import { Heart, Repeat2, User, MessageCircle } from 'lucide-react';
 
-import { Notification } from '@/validators/notification';
+import { useNotifications } from '@/features/notification/queries';
 
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export const NotificationsView = () => {
-  const [notifications, setNotifications] = useState<Notification[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate API call to fetch notifications
-    setLoading(true);
-    setTimeout(() => {
-      setNotifications([
-        {
-          id: 1,
-          type: 'LIKE',
-          user: {
-            name: 'Jane Smith',
-            username: 'janesmith',
-            profileImage: '/placeholder.svg?height=40&width=40'
-          },
-          message: 'liked your tweet',
-          tweet: { content: 'Next.js 15 is amazing! The new features are game-changing.' },
-          createdAt: '2h'
-        },
-        {
-          id: 2,
-          type: 'RETWEET',
-          user: {
-            name: 'John Doe',
-            username: 'johndoe',
-            profileImage: '/placeholder.svg?height=40&width=40'
-          },
-          message: 'retweeted your tweet',
-          tweet: { content: 'Check out this cool React pattern I discovered!' },
-          createdAt: '5h'
-        },
-        {
-          id: 3,
-          type: 'FOLLOW',
-          user: {
-            name: 'Tech News',
-            username: 'technews',
-            profileImage: '/placeholder.svg?height=40&width=40'
-          },
-          message: 'followed you',
-          createdAt: '1d'
-        },
-        {
-          id: 4,
-          type: 'MENTION',
-          user: {
-            name: 'React Dev',
-            username: 'reactdev',
-            profileImage: '/placeholder.svg?height=40&width=40'
-          },
-          message: 'mentioned you',
-          tweet: { content: 'Hey @username, what do you think about the new React 19 features?' },
-          createdAt: '2d'
-        }
-      ]);
-      setLoading(false);
-    }, 1000);
-  }, []);
+  const { notifications, isPending } = useNotifications();
 
   const getNotificationIcon = (type: string) => {
     switch (type) {
-      case 'like':
+      case 'LIKE':
         return <Heart className='size-5 text-red-500' />;
-      case 'retweet':
+      case 'RETWEET':
         return <Repeat2 className='size-5 text-green-500' />;
-      case 'follow':
+      case 'FOLLOW':
         return <User className='size-5 text-primary' />;
-      case 'mention':
+      case 'MENTION':
         return <MessageCircle className='size-5 text-primary' />;
       default:
         return null;
@@ -96,7 +38,7 @@ export const NotificationsView = () => {
             <TabsTrigger value='mentions'>Mentions</TabsTrigger>
           </TabsList>
           <TabsContent value='all' className='mt-0 divide-y'>
-            {loading ? (
+            {isPending ? (
               <>
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className='p-4 flex space-x-4'>
@@ -134,7 +76,9 @@ export const NotificationsView = () => {
                           </Link>
                           <span> {notification.message}</span>
                         </div>
-                        <span className='text-sm text-muted-foreground ml-auto'>{notification.createdAt}</span>
+                        <span className='text-sm text-muted-foreground ml-auto'>
+                          {format(new Date(notification.createdAt), 'MMM dd')}
+                        </span>
                       </div>
 
                       {notification.tweet?.content && (
@@ -149,7 +93,7 @@ export const NotificationsView = () => {
 
           <TabsContent value='mentions' className='mt-0'>
             <div className='p-4'>
-              {loading ? (
+              {isPending ? (
                 <>
                   {[1, 2].map((i) => (
                     <div key={i} className='p-4 flex space-x-4'>
@@ -203,7 +147,7 @@ export const NotificationsView = () => {
                 </>
               )}
 
-              {!loading && notifications.filter((notification) => notification.type === 'MENTION').length === 0 && (
+              {!isPending && notifications.filter((notification) => notification.type === 'MENTION').length === 0 && (
                 <div className='text-center py-10'>
                   <p className='text-lg font-semibold'>No mentions yet</p>
                   <p className='text-muted-foreground'>When someone mentions you, you&apos;ll find it here.</p>
