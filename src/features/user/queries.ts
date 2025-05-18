@@ -1,6 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { userClient } from '@/features/user/client';
+import { UpdateProfile } from '@/validators/user';
+import { handleApiError } from '../api/api-error';
 
 export const userKeys = {
   all: ['users'] as const,
@@ -25,4 +27,18 @@ export const useUsers = () => {
     queryFn: () => userClient.all()
   });
   return { users: data ?? [], isPending, isError, refetch };
+};
+
+export const useUpdateProfile = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data: UpdateProfile) => userClient.update(data),
+    onSuccess: (updatedUser) => {
+      queryClient.invalidateQueries({ queryKey: userKeys.detail(updatedUser.username) });
+    },
+    onError: (error) => {
+      handleApiError(error);
+    }
+  });
 };

@@ -16,6 +16,8 @@ export async function GET(req: Request, { params }: { params: Promise<{ username
         username: true,
         profileImage: true,
         coverImage: true,
+        location: true,
+        website: true,
         bio: true,
         createdAt: true,
         updatedAt: true,

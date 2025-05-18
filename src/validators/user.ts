@@ -30,3 +30,14 @@ export const UserSchema = z.object({
 });
 
 export type User = z.infer<typeof UserSchema>;
+
+export const UpdateProfileSchema = z.object({
+  name: z.string(),
+  bio: z.string(),
+  location: z.string(),
+  website: z.string(),
+  profileImage: z.string(),
+  coverImage: z.string()
+});
+
+export type UpdateProfile = z.infer<typeof UpdateProfileSchema>;

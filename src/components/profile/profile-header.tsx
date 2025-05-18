@@ -11,10 +11,12 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToggleFollow } from '@/features/follow/queries';
 import { useCurrentUser } from '@/hooks/use-current-user';
+import { useProfileDialog } from '@/store/use-profile-dialog';
 
 export const ProfileHeader = ({ username }: { username: string }) => {
   const currentUser = useCurrentUser();
   const { user, isPending } = useUser(username);
+  const { onOpen } = useProfileDialog();
   const { isPending: isPendingFollow, mutate: toggleFollow } = useToggleFollow();
 
   if (isPending) {
@@ -82,7 +84,7 @@ export const ProfileHeader = ({ username }: { username: string }) => {
             </div>
 
             {currentUser?.username === user?.username ? (
-              <Button variant='outline' className='rounded-full'>
+              <Button variant='outline' className='rounded-full' onClick={onOpen}>
                 Edit Profile
               </Button>
             ) : (

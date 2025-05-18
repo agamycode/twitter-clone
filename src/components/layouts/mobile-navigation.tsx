@@ -2,16 +2,19 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Search, Bell, Mail } from 'lucide-react';
+import { Home, Search, Bell, User } from 'lucide-react';
+
+import { useCurrentUser } from '@/hooks/use-current-user';
 
 export const MobileNavigation = () => {
+  const currentUser = useCurrentUser();
   const pathname = usePathname();
 
   const navItems = [
     { icon: Home, href: '/' },
     { icon: Search, href: '/explore' },
     { icon: Bell, href: '/notifications' },
-    { icon: Mail, href: '/messages' }
+    { icon: User, href: `/${currentUser?.username}`, auth: true }
   ];
 
   return (
