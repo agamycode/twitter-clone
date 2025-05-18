@@ -5,6 +5,7 @@ import { AuthError } from 'next-auth';
 import { signIn } from '@/auth';
 import { getUserByEmail } from '@/data/user';
 import { type Login, LoginSchema } from '@/validators/auth';
+import { revalidatePath } from 'next/cache';
 
 export const login = async (values: Login) => {
   const validatedFields = LoginSchema.safeParse(values);
@@ -27,7 +28,7 @@ export const login = async (values: Login) => {
       password,
       redirect: false
     });
-
+    revalidatePath('/');
     return { success: true, massage: 'Login successful!' };
   } catch (error) {
     if (error instanceof AuthError) {

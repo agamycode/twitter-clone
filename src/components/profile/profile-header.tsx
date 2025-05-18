@@ -10,8 +10,10 @@ import { useUser } from '@/features/user/queries';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToggleFollow } from '@/features/follow/queries';
+import { useCurrentUser } from '@/hooks/use-current-user';
 
 export const ProfileHeader = ({ username }: { username: string }) => {
+  const currentUser = useCurrentUser();
   const { user, isPending } = useUser(username);
   const { isPending: isPendingFollow, mutate: toggleFollow } = useToggleFollow();
 
@@ -79,13 +81,19 @@ export const ProfileHeader = ({ username }: { username: string }) => {
               />
             </div>
 
-            <Button
-              variant={user?.isFollowing ? 'outline' : 'default'}
-              className='rounded-full'
-              disabled={isPendingFollow}
-              onClick={() => user?.id && toggleFollow(user.id)}>
-              {user?.isFollowing ? 'Following' : 'Follow'}
-            </Button>
+            {currentUser?.username === user?.username ? (
+              <Button variant='outline' className='rounded-full'>
+                Edit Profile
+              </Button>
+            ) : (
+              <Button
+                variant={user?.isFollowing ? 'outline' : 'default'}
+                className='rounded-full'
+                disabled={isPendingFollow}
+                onClick={() => user?.id && toggleFollow(user.id)}>
+                {user?.isFollowing ? 'Following' : 'Follow'}
+              </Button>
+            )}
           </div>
 
           <div className='mt-4'>

@@ -2,21 +2,12 @@
 
 import { useState } from 'react';
 
-import { useLoginDialog } from '@/store/use-login-dialog';
-import { useSignUpDialog } from '@/store/use-signup-dialog';
-
 import { TweetList } from '@/components/tweet/tweet-list';
 import { TweetComposer } from '@/components/tweet/tweet-composer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Button } from './ui/button';
-import { useSession } from 'next-auth/react';
-import { LogoutButton } from './auth/logout-button';
 
 export const HomeFeed = () => {
-  const { data: session } = useSession();
   const [, setActiveTab] = useState('for-you');
-  const { onOpen: openRegister } = useSignUpDialog();
-  const { onOpen } = useLoginDialog();
 
   return (
     <div>
@@ -29,20 +20,6 @@ export const HomeFeed = () => {
           </TabsList>
           <TabsContent value='for-you' className='mt-0'>
             <TweetComposer />
-            <div className='flex space-x-2'>
-              <Button variant='outline' className='rounded-full' onClick={onOpen}>
-                Sign in
-              </Button>
-              <Button className='rounded-full' onClick={openRegister}>
-                Sign up
-              </Button>
-              <LogoutButton>
-                <Button variant='destructive' className='rounded-full'>
-                  Sign out
-                </Button>
-              </LogoutButton>
-              {JSON.stringify(session, null, 2)}
-            </div>
             <TweetList />
           </TabsContent>
           <TabsContent value='following' className='mt-0'>

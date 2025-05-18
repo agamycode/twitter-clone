@@ -6,18 +6,20 @@ import { MobileNavigation } from '@/components/layouts/mobile-navigation';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='flex min-h-screen bg-background'>
-      {/* Desktop Sidebar */}
-      <div className='hidden md:flex md:w-64 lg:w-72 shrink-0 border-r'>
-        <Sidebar />
-      </div>
+    <div className='flex justify-center bg-background min-h-svh'>
+      <div className='flex w-full max-w-7xl'>
+        {/* Desktop Sidebar - Fixed */}
+        <div className='hidden md:block md:w-64 lg:w-72 shrink-0 sticky top-0 h-svh'>
+          <Sidebar />
+        </div>
 
-      {/* Main Content */}
-      <main className='flex-1 border-x max-w-2xl mx-auto w-full'>{children}</main>
+        {/* Main Content - Scrollable */}
+        <main className='flex-1 border-x w-full overflow-y-auto h-svh'>{children}</main>
 
-      {/* Right Sidebar - Trending/Who to follow */}
-      <div className='hidden lg:block lg:w-80 xl:w-96 shrink-0 pl-4'>
-        <RightSidebar />
+        {/* Right Sidebar - Fixed with internal scroll */}
+        <div className='hidden lg:block lg:w-80 xl:w-96 shrink-0 sticky top-0 h-svh'>
+          <RightSidebar />
+        </div>
       </div>
 
       {/* Mobile Navigation */}

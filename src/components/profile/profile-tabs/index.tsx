@@ -1,8 +1,8 @@
 'use client';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ProfileTweetsTab } from './profile-tabs/tweets-tab';
-import { ProfileLikesTab } from './profile-tabs/likes-tab';
+import { ProfileTweetsTab } from './tweets-tab';
+import { ProfileLikesTab } from './likes-tab';
 
 export const ProfileTabs = ({ username }: { username: string }) => {
   return (

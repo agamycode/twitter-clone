@@ -1,19 +1,22 @@
 'use client';
 
+import { useTransition } from 'react';
+import { useRouter } from 'next/navigation';
+
 import { logout } from '@/actions/logout';
 
-interface LogoutButtonProps {
-  children?: React.ReactNode;
-}
+import { Button } from '@/components/ui/button';
 
-export const LogoutButton = ({ children }: LogoutButtonProps) => {
+export const LogoutButton = () => {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+
   const onClick = () => {
-    logout();
+    startTransition(() => logout().then(() => router.push('/')));
   };
-
   return (
-    <span onClick={onClick} className='cursor-pointer'>
-      {children}
-    </span>
+    <Button onClick={onClick} variant='outline' className='rounded-full' disabled={isPending}>
+      Sign out
+    </Button>
   );
 };

@@ -18,3 +18,11 @@ export const useUser = (username: string) => {
   });
   return { user: data, isPending, isError, refetch };
 };
+
+export const useUsers = () => {
+  const { data, isPending, isError, refetch } = useQuery({
+    queryKey: userKeys.details(),
+    queryFn: () => userClient.all()
+  });
+  return { users: data ?? [], isPending, isError, refetch };
+};

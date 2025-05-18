@@ -36,7 +36,6 @@ export const FollowersView = ({ username }: FollowersPageProps) => {
                   <div className='space-y-2'>
                     <Skeleton className='h-4 w-32' />
                     <Skeleton className='h-4 w-24' />
-                    <Skeleton className='size-48' />
                   </div>
                 </div>
                 <Skeleton className='h-9 w-24 rounded-full' />
