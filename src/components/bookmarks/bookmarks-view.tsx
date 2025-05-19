@@ -2,10 +2,11 @@
 
 import { MoreHorizontal } from 'lucide-react';
 
+import { useBookmarks } from '@/features/bookmark/queries';
+
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { TweetPost } from '@/components/tweet/tweet';
-import { useBookmarks } from '@/features/bookmark/queries';
 
 export const BookmarksView = () => {
   const { tweets, isPending } = useBookmarks();

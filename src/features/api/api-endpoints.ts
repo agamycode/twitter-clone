@@ -1,8 +1,8 @@
 export const API_ENDPOINTS = {
   USER: 'user',
   TWEET: 'tweet',
-  BOOKMARKS: 'tweet/bookmark',
   LIKES: 'tweet/like',
   FOLLOW: 'user/follow',
+  BOOKMARKS: 'tweet/bookmark',
   NOTIFICATION: 'notification'
 };

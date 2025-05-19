@@ -7,6 +7,5 @@ export const followClient = {
     HttpClient.get<User[]>(`${API_ENDPOINTS.FOLLOW}/followers?username=${username}`),
   getFollowing: async (username: string) =>
     HttpClient.get<User[]>(`${API_ENDPOINTS.FOLLOW}/following?username=${username}`),
-  toggle: async (targetUserId: number) =>
-    HttpClient.post<{ message: string }>(`${API_ENDPOINTS.USER}/follow`, { targetUserId })
+  toggle: async (targetUserId: number) => HttpClient.post<{ message: string }>(API_ENDPOINTS.FOLLOW, { targetUserId })
 };

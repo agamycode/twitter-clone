@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { register } from '@/actions/register';
 import { useLoginDialog } from '@/store/use-login-dialog';
 import { useSignUpDialog } from '@/store/use-signup-dialog';
-import { Register, RegisterSchema } from '@/validators/auth';
+import { type Register, RegisterSchema } from '@/validators/auth';
 
 import {
   Dialog,

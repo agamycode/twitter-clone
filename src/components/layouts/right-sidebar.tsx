@@ -12,13 +12,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export function RightSidebar() {
   const { users, isPending } = useUsers();
-  // const trendingTopics = [
-  //   { category: 'Sports', title: 'World Cup', tweets: '125K' },
-  //   { category: 'Politics', title: 'Election Results', tweets: '98K' },
-  //   { category: 'Entertainment', title: 'New Movie Release', tweets: '85K' },
-  //   { category: 'Technology', title: 'Next.js 15', tweets: '65K' },
-  //   { category: 'Business', title: 'Stock Market', tweets: '42K' }
-  // ];
 
   return (
     <div className='h-full flex flex-col'>
@@ -32,23 +25,6 @@ export function RightSidebar() {
 
       {/* Scrollable content */}
       <div className='flex-1 overflow-y-auto p-4 space-y-6'>
-        {/* Trending */}
-        {/* <div className='bg-muted/50 rounded-xl p-4'>
-          <h2 className='font-bold text-xl mb-4'>What&apos;s happening</h2>
-          <div className='space-y-4'>
-            {trendingTopics.map((topic, index) => (
-              <div key={index} className='cursor-pointer hover:bg-muted rounded-lg p-2'>
-                <p className='text-xs text-muted-foreground'>{topic.category} · Trending</p>
-                <p className='font-semibold'>{topic.title}</p>
-                <p className='text-xs text-muted-foreground'>{topic.tweets} Tweets</p>
-              </div>
-            ))}
-          </div>
-          <Button variant='ghost' className='w-full justify-start mt-2 text-primary'>
-            Show more
-          </Button>
-        </div> */}
-
         {/* Who to follow */}
         <div className='bg-muted/50 rounded-xl p-4'>
           <h2 className='font-bold text-xl mb-4'>Who to follow</h2>

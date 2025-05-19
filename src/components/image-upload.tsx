@@ -1,14 +1,14 @@
 'use client';
 
 import type React from 'react';
+import Image from 'next/image';
 import { Camera, X } from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
 import { useCallback, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
 
-interface ImageUploadProps {
+interface Props {
   value: string;
   onChange: (value: string) => void;
   disabled?: boolean;
@@ -16,7 +16,7 @@ interface ImageUploadProps {
   className?: string;
 }
 
-export function ImageUpload({ value, onChange, disabled, variant = 'avatar', className }: ImageUploadProps) {
+export const ImageUpload = ({ value, onChange, disabled, variant = 'avatar', className }: Props) => {
   const [preview, setPreview] = useState<string>(value);
 
   const onDrop = useCallback(
@@ -65,12 +65,12 @@ export function ImageUpload({ value, onChange, disabled, variant = 'avatar', cla
         <input {...getInputProps()} />
         {preview ? (
           <>
-            <Image 
-              src={preview || '/placeholder.svg'} 
-              alt='Cover' 
+            <Image
+              src={preview || '/placeholder.svg'}
+              alt='Cover'
               className='w-full h-full object-cover'
               width={800}
-              height={200} 
+              height={200}
             />
             <div className='absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center'>
               <Button
@@ -109,12 +109,12 @@ export function ImageUpload({ value, onChange, disabled, variant = 'avatar', cla
       <input {...getInputProps()} />
       {preview ? (
         <>
-          <Image 
-            src={preview || '/placeholder.svg'} 
-            alt='Avatar' 
+          <Image
+            src={preview || '/placeholder.svg'}
+            alt='Avatar'
             className='w-full h-full object-cover'
             width={96}
-            height={96} 
+            height={96}
           />
           <div className='absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-full'>
             <Button
@@ -134,4 +134,4 @@ export function ImageUpload({ value, onChange, disabled, variant = 'avatar', cla
       )}
     </div>
   );
-}
+};

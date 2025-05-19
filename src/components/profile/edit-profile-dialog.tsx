@@ -1,6 +1,7 @@
 'use client';
 
 import type React from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { MapPin, LinkIcon, Calendar } from 'lucide-react';
@@ -8,7 +9,7 @@ import { MapPin, LinkIcon, Calendar } from 'lucide-react';
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { useProfileDialog } from '@/store/use-profile-dialog';
 import { useUpdateProfile, useUser } from '@/features/user/queries';
-import { UpdateProfile, UpdateProfileSchema } from '@/validators/user';
+import { type UpdateProfile, UpdateProfileSchema } from '@/validators/user';
 
 import {
   Dialog,
@@ -24,7 +25,6 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { ImageUpload } from '@/components/image-upload';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { useEffect } from 'react';
 
 export function EditProfileDialog() {
   const { isOpen, onClose } = useProfileDialog();

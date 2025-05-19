@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { login } from '@/actions/login';
-import { Login, LoginSchema } from '@/validators/auth';
+import { type Login, LoginSchema } from '@/validators/auth';
 import { useLoginDialog } from '@/store/use-login-dialog';
 import { useSignUpDialog } from '@/store/use-signup-dialog';
 

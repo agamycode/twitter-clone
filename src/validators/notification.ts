@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { NotificationTypeSchema } from '@/validators/notification-type';
+import { NotificationType } from '@prisma/client';
 
 export const NotificationSchema = z.object({
   id: z.number(),
-  type: NotificationTypeSchema,
+  type: z.nativeEnum(NotificationType),
   message: z.string(),
   read: z.boolean().optional(),
   createdAt: z.string(),

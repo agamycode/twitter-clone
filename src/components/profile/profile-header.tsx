@@ -6,12 +6,12 @@ import { format } from 'date-fns';
 import { ArrowLeft, Calendar, LinkIcon, MapPin } from 'lucide-react';
 
 import { useUser } from '@/features/user/queries';
+import { useCurrentUser } from '@/hooks/use-current-user';
+import { useToggleFollow } from '@/features/follow/queries';
+import { useProfileDialog } from '@/store/use-profile-dialog';
 
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useToggleFollow } from '@/features/follow/queries';
-import { useCurrentUser } from '@/hooks/use-current-user';
-import { useProfileDialog } from '@/store/use-profile-dialog';
 
 export const ProfileHeader = ({ username }: { username: string }) => {
   const currentUser = useCurrentUser();

@@ -6,6 +6,8 @@ import { format } from 'date-fns';
 import { MessageCircle, Repeat2, Heart, BarChart2, Share, MoreHorizontal, Bookmark } from 'lucide-react';
 
 import type { Tweet } from '@/validators/tweet';
+import { useLikeToggle } from '@/features/like/queries';
+import { useBookmarkToggle } from '@/features/bookmark/queries';
 
 import {
   DropdownMenu,
@@ -15,8 +17,6 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { useLikeToggle } from '@/features/like/queries';
-import { useBookmarkToggle } from '@/features/bookmark/queries';
 
 interface TweetProps {
   tweet: Tweet;
@@ -87,7 +87,7 @@ export const TweetPost = ({ tweet }: TweetProps) => {
               className={`mt-3 grid gap-2 rounded-xl overflow-hidden ${
                 images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'
               }`}>
-                {/* TODO: */}
+              {/* TODO: */}
               {images.map((img, index) => (
                 <Image
                   key={index}

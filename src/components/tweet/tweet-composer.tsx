@@ -4,9 +4,10 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ImageIcon, MapPin, Calendar, Smile, X, Loader2 } from 'lucide-react';
 
+import { useCreateTweet } from '@/features/tweet/queries';
+
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { useCreateTweet } from '@/features/tweet/queries';
 
 export const TweetComposer = () => {
   const { mutate: createTweet, isPending } = useCreateTweet();
