@@ -1,4 +1,4 @@
-import { NotificationsView } from '@/components/notifications/notifications-view';
+import { NotificationsView } from '@/components/notifications';
 
 const NotificationsPage = () => {
   return <NotificationsView />;

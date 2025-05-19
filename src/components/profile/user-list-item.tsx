@@ -28,7 +28,7 @@ export const UserListItem = ({ user }: UserListItemProps) => {
             <Image
               fill
               style={{ objectFit: 'cover', borderRadius: '100%' }}
-              src={user.profileImage || '/placeholder.svg'}
+              src={user.profileImage || '/placeholder/placeholder.svg'}
               alt={user.name || 'Avatar'}
             />
           </div>

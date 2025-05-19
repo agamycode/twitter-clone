@@ -7,8 +7,8 @@ import { Heart, Repeat2, User, MessageCircle } from 'lucide-react';
 
 import { useNotifications } from '@/features/notification/queries';
 
-import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { NotificationsSkeleton } from '@/components/notifications/notifications-skeleton';
 
 export const NotificationsView = () => {
   const { notifications, isPending } = useNotifications();
@@ -39,20 +39,7 @@ export const NotificationsView = () => {
           </TabsList>
           <TabsContent value='all' className='mt-0 divide-y'>
             {isPending ? (
-              <>
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className='p-4 flex space-x-4'>
-                    <Skeleton className='size-10 rounded-full' />
-                    <div className='space-y-2 flex-1'>
-                      <div className='flex items-center space-x-2'>
-                        <Skeleton className='h-4 w-24' />
-                        <Skeleton className='h-4 w-16' />
-                      </div>
-                      <Skeleton className='h-4 w-full' />
-                    </div>
-                  </div>
-                ))}
-              </>
+              <NotificationsSkeleton />
             ) : (
               <>
                 {notifications.map((notification) => (
@@ -66,7 +53,7 @@ export const NotificationsView = () => {
                               fill
                               style={{ objectFit: 'cover', borderRadius: '100%' }}
                               alt={notification.user.name || 'Avatar'}
-                              src={notification.user.profileImage || '/placeholder.svg'}
+                              src={notification.user.profileImage || '/placeholder/placeholder.svg'}
                             />
                           </div>
                         </Link>
@@ -94,20 +81,7 @@ export const NotificationsView = () => {
           <TabsContent value='mentions' className='mt-0'>
             <div className='p-4'>
               {isPending ? (
-                <>
-                  {[1, 2].map((i) => (
-                    <div key={i} className='p-4 flex space-x-4'>
-                      <Skeleton className='size-10 rounded-full' />
-                      <div className='space-y-2 flex-1'>
-                        <div className='flex items-center space-x-2'>
-                          <Skeleton className='h-4 w-24' />
-                          <Skeleton className='h-4 w-16' />
-                        </div>
-                        <Skeleton className='h-4 w-full' />
-                      </div>
-                    </div>
-                  ))}
-                </>
+                <NotificationsSkeleton count={2} />
               ) : (
                 <>
                   {notifications
@@ -125,7 +99,7 @@ export const NotificationsView = () => {
                                   fill
                                   style={{ objectFit: 'cover', borderRadius: '100%' }}
                                   alt={notification.user.name || 'Avatar'}
-                                  src={notification.user.profileImage || '/placeholder.svg'}
+                                  src={notification.user.profileImage || '/placeholder/placeholder.svg'}
                                 />
                               </div>
                             </Link>

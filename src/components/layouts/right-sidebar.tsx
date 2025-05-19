@@ -52,7 +52,7 @@ export function RightSidebar() {
                       <Image
                         fill
                         style={{ borderRadius: '100%', objectFit: 'cover' }}
-                        src={user.profileImage || '/placeholder.svg'}
+                        src={user.profileImage || '/placeholder/placeholder.svg'}
                         alt={user.name || 'Avatar'}
                       />
                     </div>

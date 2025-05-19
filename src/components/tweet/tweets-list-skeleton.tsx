@@ -1,9 +1,9 @@
 import { Skeleton } from '@/components/ui/skeleton';
 
-export const TweetsListSkeleton = () => {
+export const TweetsListSkeleton = ({ count = 3 }: { count?: number }) => {
   return (
     <div className='divide-y'>
-      {[1, 2, 3].map((i) => (
+      {Array.from({ length: count }).map((_, i) => (
         <div key={i} className='p-4 flex space-x-4'>
           <Skeleton className='size-12 rounded-full' />
           <div className='space-y-2 flex-1'>

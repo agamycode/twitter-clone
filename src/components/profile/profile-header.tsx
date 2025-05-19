@@ -69,7 +69,7 @@ export const ProfileHeader = ({ username }: { username: string }) => {
 
       <div className='relative'>
         <div className='h-48 bg-muted relative'>
-          <Image fill style={{ objectFit: 'cover' }} src={user?.coverImage || '/placeholder.svg'} alt='Cover' />
+          <Image fill style={{ objectFit: 'cover' }} src={user?.coverImage || '/placeholder/placeholder.svg'} alt='Cover' />
         </div>
 
         <div className='px-4 pb-4 pt-2'>
@@ -78,7 +78,7 @@ export const ProfileHeader = ({ username }: { username: string }) => {
               <Image
                 fill
                 style={{ objectFit: 'cover', borderRadius: '100%' }}
-                src={user?.profileImage || '/placeholder.svg'}
+                src={user?.profileImage || '/placeholder/placeholder.svg'}
                 alt={user?.name || 'Avatar'}
               />
             </div>

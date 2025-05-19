@@ -63,7 +63,7 @@ export function RegisterDialog() {
 
   return (
     <Dialog open={isRegisterOpen} onOpenChange={closeRegister}>
-      <DialogContent className='sm:max-w-md'>
+      <DialogContent>
         <DialogHeader>
           <DialogTitle className='text-xl font-bold'>Create your account</DialogTitle>
           <DialogDescription>Fill in your details to create a new Twitter account</DialogDescription>

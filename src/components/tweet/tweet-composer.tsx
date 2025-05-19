@@ -32,7 +32,7 @@ export const TweetComposer = () => {
     setTimeout(() => {
       setUploadedImages([
         ...uploadedImages,
-        `/placeholder.svg?height=200&width=300&text=Image${uploadedImages.length + 1}`
+        `/placeholder/placeholder.svg?height=200&width=300&text=Image${uploadedImages.length + 1}`
       ]);
       setIsUploading(false);
     }, 1000);
@@ -63,7 +63,7 @@ export const TweetComposer = () => {
                 <div key={index} className='relative rounded-xl overflow-hidden'>
                   {/* TODO: fix */}
                   <Image
-                    src={img || '/placeholder.svg'}
+                    src={img || '/placeholder/placeholder.svg'}
                     alt='Uploaded content'
                     width={300}
                     height={200}

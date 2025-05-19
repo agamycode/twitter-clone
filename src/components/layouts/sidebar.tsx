@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useCallback } from 'react';
 import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
-import { Home, Search, Bell, Bookmark, User, Twitter, Moon, Sun, MoreHorizontal, LogOut } from 'lucide-react';
+import { Home, Search, Bell, Bookmark, User, Moon, Sun, MoreHorizontal, LogOut } from 'lucide-react';
 
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { useLoginDialog } from '@/store/use-login-dialog';
@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
+import { LogoIcon } from '@/components/icons/twitter-logo';
 import { LogoutButton } from '@/components/auth/logout-button';
 
 export const Sidebar = () => {
@@ -50,7 +51,7 @@ export const Sidebar = () => {
       {/* Top section with logo */}
       <div className='p-4'>
         <Link href='/' className='flex items-center text-primary p-2 rounded-full size-12 hover:bg-primary/10'>
-          <Twitter className='size-8' />
+          <LogoIcon className='size-8' />
         </Link>
       </div>
 
@@ -62,7 +63,7 @@ export const Sidebar = () => {
             <div
               key={item.href}
               onClick={() => handleItemClick(item.href, item.auth || false)}
-              className={`flex items-center space-x-4 px-4 py-3 rounded-full hover:bg-muted cursor-pointer ${
+              className={`inline-flex items-center space-x-4 px-4 py-3 rounded-full hover:bg-muted cursor-pointer ${
                 isActive && 'font-bold'
               }`}>
               <item.icon className='size-6' />
@@ -89,11 +90,11 @@ export const Sidebar = () => {
             <DropdownMenuTrigger asChild>
               <div className='flex items-center justify-between p-2 rounded-full hover:bg-muted cursor-pointer'>
                 <div className='flex items-center space-x-2'>
-                  <div className='w-10 h-10 rounded-full bg-muted overflow-hidden relative'>
+                  <div className='size-10 rounded-full bg-muted overflow-hidden relative'>
                     <Image
                       fill
                       style={{ borderRadius: '100%', objectFit: 'cover' }}
-                      src={currentUser.image || '/placeholder.svg'}
+                      src={currentUser.image || '/placeholder/placeholder.svg'}
                       alt={currentUser?.name || 'Avatar'}
                     />
                   </div>

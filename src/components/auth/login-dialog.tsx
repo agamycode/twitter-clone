@@ -65,7 +65,7 @@ export function LoginDialog() {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className='sm:max-w-md'>
+      <DialogContent>
         <DialogHeader>
           <DialogTitle className='text-xl font-bold'>Sign in to Twitter</DialogTitle>
           <DialogDescription>Enter your username and password to access your account</DialogDescription>

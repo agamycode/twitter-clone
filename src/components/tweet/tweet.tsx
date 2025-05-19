@@ -39,7 +39,7 @@ export const TweetPost = ({ tweet }: TweetProps) => {
             <Image
               fill
               style={{ borderRadius: '100%', objectFit: 'cover' }}
-              src={user.profileImage || '/placeholder.svg'}
+              src={user.profileImage || '/placeholder/placeholder.svg'}
               alt={user.name || 'Avatar'}
             />
           </div>
@@ -91,7 +91,7 @@ export const TweetPost = ({ tweet }: TweetProps) => {
               {images.map((img, index) => (
                 <Image
                   key={index}
-                  src={img || '/placeholder.svg'}
+                  src={img || '/placeholder/placeholder.svg'}
                   alt='Tweet media'
                   className='w-full h-auto object-cover'
                   fill

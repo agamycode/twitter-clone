@@ -36,7 +36,7 @@ export const TweetDetail = ({ id }: TweetDetailProps) => {
               <Image
                 fill
                 style={{ objectFit: 'cover', borderRadius: '100%' }}
-                src={tweet?.user.profileImage || '/placeholder.svg'}
+                src={tweet?.user.profileImage || '/placeholder/placeholder.svg'}
                 alt={tweet?.user.name || 'Avatar'}
               />
             </div>
@@ -62,7 +62,7 @@ export const TweetDetail = ({ id }: TweetDetailProps) => {
                 {tweet?.images.map((img: string, index: number) => (
                   <Image
                     key={index}
-                    src={img || '/placeholder.svg'}
+                    src={img || '/placeholder/placeholder.svg'}
                     alt='Tweet media'
                     fill
                     style={{ objectFit: 'cover' }}

@@ -1,9 +1,9 @@
 import { Skeleton } from '@/components/ui/skeleton';
 
-export const UserListSkeleton = () => {
+export const UserListSkeleton = ({ count = 5 }: { count?: number }) => {
   return (
     <>
-      {[1, 2, 3, 4, 5].map((i) => (
+      {Array.from({ length: count }).map((_, i) => (
         <div key={i} className='p-4 flex items-center justify-between'>
           <div className='flex items-center space-x-3'>
             <Skeleton className='size-12 rounded-full' />

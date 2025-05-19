@@ -66,7 +66,7 @@ export const ImageUpload = ({ value, onChange, disabled, variant = 'avatar', cla
         {preview ? (
           <>
             <Image
-              src={preview || '/placeholder.svg'}
+              src={preview || '/placeholder/placeholder.svg'}
               alt='Cover'
               className='w-full h-full object-cover'
               width={800}
@@ -110,7 +110,7 @@ export const ImageUpload = ({ value, onChange, disabled, variant = 'avatar', cla
       {preview ? (
         <>
           <Image
-            src={preview || '/placeholder.svg'}
+            src={preview || '/placeholder/placeholder.svg'}
             alt='Avatar'
             className='w-full h-full object-cover'
             width={96}
