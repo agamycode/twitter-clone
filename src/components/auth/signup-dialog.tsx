@@ -124,7 +124,7 @@ export function RegisterDialog() {
               )}
             />
 
-            <Button type='submit' className='w-full rounded-full' disabled={isPending}>
+            <Button type='submit' className='w-full' disabled={isPending}>
               {isPending ? 'Creating account...' : 'Sign up'}
             </Button>
           </form>

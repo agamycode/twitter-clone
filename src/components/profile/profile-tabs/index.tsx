@@ -6,15 +6,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export const ProfileTabs = ({ username }: { username: string }) => {
   return (
-    <Tabs defaultValue='tweets' className='w-full'>
-      <TabsList className='w-full grid grid-cols-4 rounded-none'>
+    <Tabs defaultValue='tweets'>
+      <TabsList className='grid grid-cols-4'>
         <TabsTrigger value='tweets'>Tweets</TabsTrigger>
         <TabsTrigger value='likes'>Likes</TabsTrigger>
       </TabsList>
-      <TabsContent value='tweets' className='mt-0'>
+      <TabsContent value='tweets'>
         <ProfileTweetsTab username={username} />
       </TabsContent>
-      <TabsContent value='likes' className='mt-0'>
+      <TabsContent value='likes'>
         <ProfileLikesTab />
       </TabsContent>
     </Tabs>

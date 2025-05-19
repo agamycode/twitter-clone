@@ -45,13 +45,15 @@ export const TweetComposer = () => {
   };
 
   return (
-    <div className='p-4 border-b'>
-      <div className='flex space-x-4'>
-        <div className='size-12 rounded-full bg-muted shrink-0'></div>
-        <div className='flex-1'>
+    <div className='pt-1 border-b'>
+      <div className='flex space-x-4 px-4'>
+        <div className='pt-3 basis-10 grow-0 mr-2'>
+          <div className='size-12 rounded-full bg-muted shrink-0'></div>
+        </div>
+        <div className='static basis-0 pt-1 justify-center grow'>
           <Textarea
             placeholder="What's happening?"
-            className='w-full border-none resize-none text-xl focus-visible:ring-0 p-0 min-h-[120px]'
+            className='w-full border-none resize-none text-xl focus-visible:ring-0 p-0 min-h-14'
             value={tweetText}
             onChange={(e) => setTweetText(e.target.value)}
             disabled={isPending}
@@ -72,7 +74,7 @@ export const TweetComposer = () => {
                   <Button
                     size='icon'
                     variant='secondary'
-                    className='absolute top-2 right-2 rounded-full size-8 bg-black/50 hover:bg-black/70'
+                    className='absolute top-2 right-2 size-8 bg-black/50 hover:bg-black/70'
                     onClick={() => removeImage(index)}>
                     <X className='size-4 text-white' />
                   </Button>
@@ -81,29 +83,29 @@ export const TweetComposer = () => {
             </div>
           )}
 
-          <div className='flex items-center justify-between mt-4 pt-2 border-t'>
+          <div className='flex items-center justify-between py-2 '>
             <div className='flex space-x-1'>
               <Button
                 variant='ghost'
                 size='icon'
-                className='text-primary rounded-full size-9'
+                className='text-primary size-9'
                 onClick={handleImageUpload}
                 disabled={isUploading || uploadedImages.length >= 4 || isPending}>
                 <ImageIcon className='size-5' />
               </Button>
-              <Button variant='ghost' size='icon' className='text-primary rounded-full size-9' disabled={isPending}>
+              <Button variant='ghost' size='icon' className='text-primary size-9' disabled={isPending}>
                 <MapPin className='size-5' />
               </Button>
-              <Button variant='ghost' size='icon' className='text-primary rounded-full size-9' disabled={isPending}>
+              <Button variant='ghost' size='icon' className='text-primary size-9' disabled={isPending}>
                 <Smile className='size-5' />
               </Button>
-              <Button variant='ghost' size='icon' className='text-primary rounded-full size-9' disabled={isPending}>
+              <Button variant='ghost' size='icon' className='text-primary size-9' disabled={isPending}>
                 <Calendar className='size-5' />
               </Button>
             </div>
 
             <Button
-              className='rounded-full px-4'
+              className='px-4'
               disabled={(!tweetText.trim() && uploadedImages.length === 0) || isPending}
               onClick={handleTweet}>
               {isPending ? <Loader2 className='size-4 mr-2 animate-spin' /> : null} Tweet

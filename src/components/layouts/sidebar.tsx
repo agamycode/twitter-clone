@@ -75,7 +75,7 @@ export const Sidebar = () => {
 
       {/* Tweet button */}
       <div className='p-4 mt-2'>
-        <Button disabled={!currentUser} className='w-full rounded-full' variant='default'>
+        <Button disabled={!currentUser} className='w-full' variant='default'>
           Tweet
         </Button>
       </div>
@@ -130,7 +130,7 @@ export const Sidebar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
-          <Button variant='outline' className='w-full rounded-full' onClick={onOpen}>
+          <Button variant='outline' className='w-full' onClick={onOpen}>
             Sign in
           </Button>
         )}

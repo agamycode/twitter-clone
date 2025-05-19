@@ -47,13 +47,12 @@ export const ExploreView = () => {
         </div>
       </div>
 
-      <Tabs defaultValue='for-you' className='w-full'>
-        <TabsList className='w-full grid grid-cols-2 rounded-none'>
+      <Tabs defaultValue='for-you'>
+        <TabsList>
           <TabsTrigger value='for-you'>For you</TabsTrigger>
           <TabsTrigger value='trending'>Trending</TabsTrigger>
         </TabsList>
-
-        <TabsContent value='for-you' className='mt-0'>
+        <TabsContent value='for-you'>
           <div className='p-4 border-b'>
             <h2 className='font-bold text-xl'>Trends for you</h2>
           </div>
@@ -81,7 +80,7 @@ export const ExploreView = () => {
           )}
         </TabsContent>
 
-        <TabsContent value='trending' className='mt-0'>
+        <TabsContent value='trending'>
           <TweetList />
         </TabsContent>
       </Tabs>

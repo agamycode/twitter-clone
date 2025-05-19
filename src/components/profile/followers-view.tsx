@@ -1,10 +1,8 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-
 import { useFollowers } from '@/features/follow/queries';
 
+import { Header } from '@/components/layouts/header';
 import { UserListItem } from '@/components/profile/user-list-item';
 import { UserListSkeleton } from '@/components/profile/user-list-skeleton';
 
@@ -16,16 +14,7 @@ export const FollowersView = ({ username }: FollowersPageProps) => {
   const { followers, isPending } = useFollowers(username);
   return (
     <div>
-      <div className='sticky top-0 z-10 flex items-center p-4 bg-background/80 backdrop-blur-sm'>
-        <Link href={`/${username}`} className='mr-6'>
-          <ArrowLeft className='size-5' />
-        </Link>
-        <div>
-          <h1 className='font-bold text-xl'>Followers</h1>
-          <p className='text-sm text-muted-foreground'>@{username}</p>
-        </div>
-      </div>
-
+      <Header title='Followers' subtitle={`@${username}`} />
       <div className='divide-y'>
         {isPending ? (
           <UserListSkeleton />

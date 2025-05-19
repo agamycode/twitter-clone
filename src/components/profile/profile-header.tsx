@@ -12,6 +12,7 @@ import { useProfileDialog } from '@/store/use-profile-dialog';
 
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Header } from '@/components/layouts/header';
 
 export const ProfileHeader = ({ username }: { username: string }) => {
   const currentUser = useCurrentUser();
@@ -57,19 +58,16 @@ export const ProfileHeader = ({ username }: { username: string }) => {
 
   return (
     <div>
-      <div className='sticky top-0 z-10 flex items-center p-4 bg-background/80 backdrop-blur-sm'>
-        <Link href='/' className='mr-6'>
-          <ArrowLeft className='size-5' />
-        </Link>
-        <div>
-          <h1 className='font-bold text-xl'>{user?.name}</h1>
-          <p className='text-sm text-muted-foreground'>{user?.followersCount || 0} Followers</p>
-        </div>
-      </div>
+      <Header title={user?.name} subtitle={`${user?.followersCount || 0} Followers`} />
 
       <div className='relative'>
         <div className='h-48 bg-muted relative'>
-          <Image fill style={{ objectFit: 'cover' }} src={user?.coverImage || '/placeholder/placeholder.svg'} alt='Cover' />
+          <Image
+            fill
+            style={{ objectFit: 'cover' }}
+            src={user?.coverImage || '/placeholder/placeholder.svg'}
+            alt='Cover'
+          />
         </div>
 
         <div className='px-4 pb-4 pt-2'>
@@ -84,13 +82,12 @@ export const ProfileHeader = ({ username }: { username: string }) => {
             </div>
 
             {currentUser?.username === user?.username ? (
-              <Button variant='outline' className='rounded-full' onClick={onOpen}>
+              <Button variant='outline' onClick={onOpen}>
                 Edit Profile
               </Button>
             ) : (
               <Button
                 variant={user?.isFollowing ? 'outline' : 'default'}
-                className='rounded-full'
                 disabled={isPendingFollow}
                 onClick={() => user?.id && toggleFollow(user.id)}>
                 {user?.isFollowing ? 'Following' : 'Follow'}

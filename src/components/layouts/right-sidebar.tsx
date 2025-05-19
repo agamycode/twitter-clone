@@ -61,7 +61,7 @@ export function RightSidebar() {
                       <p className='text-sm text-muted-foreground'>{user.username}</p>
                     </div>
                   </div>
-                  <Button className='rounded-full' size='sm'>
+                  <Button size='sm'>
                     Follow
                   </Button>
                 </div>

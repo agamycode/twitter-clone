@@ -99,7 +99,7 @@ export function LoginDialog() {
               )}
             />
 
-            <Button type='submit' className='w-full rounded-full' disabled={isPending}>
+            <Button type='submit' className='w-full' disabled={isPending}>
               {isPending ? 'Signing in...' : 'Sign in'}
             </Button>
           </form>
