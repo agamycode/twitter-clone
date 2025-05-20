@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { db } from '@/lib/db';
 import { auth } from '@/auth';
-import { getLikeByUserAndTweet } from '@/data/like';
 
 export async function POST(req: NextRequest) {
   try {
@@ -20,7 +19,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Tweet not found' }, { status: 404 });
     }
 
-    const existingLike = await getLikeByUserAndTweet(userId, tweetId);
+    const existingLike = await db.like.findUnique({ where: { userId_tweetId: { userId, tweetId } } });
     if (existingLike) {
       await db.like.delete({ where: { userId_tweetId: { userId, tweetId } } });
 

@@ -3,7 +3,6 @@
 import bcrypt from 'bcryptjs';
 
 import { db } from '@/lib/db';
-import { getUserByEmail } from '@/data/user';
 import { type Register, RegisterSchema } from '@/validators/auth';
 
 export const register = async (values: Register) => {
@@ -16,7 +15,7 @@ export const register = async (values: Register) => {
   const { email, password, name, username } = validatedFields.data;
   const passwordHash = await bcrypt.hash(password, 10);
 
-  const existingUser = await getUserByEmail(email);
+  const existingUser = await db.user.findUnique({ where: { email } });
 
   if (existingUser) {
     return { success: false, massage: 'Email already in use!' };

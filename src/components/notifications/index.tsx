@@ -8,6 +8,7 @@ import { Heart, Repeat2, User, MessageCircle } from 'lucide-react';
 import { useNotifications } from '@/features/notification/queries';
 
 import { Header } from '@/components/layouts/header';
+import { EmptyPage } from '@/components/layouts/empty-page';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { NotificationsSkeleton } from '@/components/notifications/notifications-skeleton';
 
@@ -76,6 +77,13 @@ export const NotificationsView = () => {
               ))}
             </>
           )}
+
+          {!isPending && notifications.length === 0 && (
+            <EmptyPage
+              title='Nothing to see here — yet'
+              description='From likes to reposts and a whole lot more, this is where all the action happens.'
+            />
+          )}
         </TabsContent>
 
         <TabsContent value='mentions'>
@@ -122,10 +130,10 @@ export const NotificationsView = () => {
             )}
 
             {!isPending && notifications.filter((notification) => notification.type === 'MENTION').length === 0 && (
-              <div className='text-center py-10'>
-                <p className='text-lg font-semibold'>No mentions yet</p>
-                <p className='text-muted-foreground'>When someone mentions you, you&apos;ll find it here.</p>
-              </div>
+              <EmptyPage
+                title='Nothing to see here — yet'
+                description='When someone mentions you, you’ll find it here.'
+              />
             )}
           </div>
         </TabsContent>

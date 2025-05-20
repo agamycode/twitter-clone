@@ -3,14 +3,11 @@
 import { useFollowers } from '@/features/follow/queries';
 
 import { Header } from '@/components/layouts/header';
+import { EmptyPage } from '@/components/layouts/empty-page';
 import { UserListItem } from '@/components/profile/user-list-item';
 import { UserListSkeleton } from '@/components/profile/user-list-skeleton';
 
-interface FollowersPageProps {
-  username: string;
-}
-
-export const FollowersView = ({ username }: FollowersPageProps) => {
+export const FollowersView = ({ username }: { username: string }) => {
   const { followers, isPending } = useFollowers(username);
   return (
     <div>
@@ -27,10 +24,10 @@ export const FollowersView = ({ username }: FollowersPageProps) => {
         )}
 
         {!isPending && followers.length === 0 && (
-          <div className='text-center py-10'>
-            <p className='text-lg font-semibold'>@{username} doesn&apos;t have any followers yet</p>
-            <p className='text-muted-foreground'>When someone follows them, they&apos;ll be listed here.</p>
-          </div>
+          <EmptyPage
+            title='Looking for followers?'
+            description='When someone follows this account, they’ll show up here. Posting and interacting with others helps boost followers.'
+          />
         )}
       </div>
     </div>

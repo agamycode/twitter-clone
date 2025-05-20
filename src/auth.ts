@@ -4,7 +4,6 @@ import { PrismaAdapter } from '@auth/prisma-adapter';
 import Credentials from 'next-auth/providers/credentials';
 
 import { db } from '@/lib/db';
-import { getUserByEmail } from '@/data/user';
 import { LoginSchema } from '@/validators/auth';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -21,7 +20,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (validatedFields.success) {
           const { email, password } = validatedFields.data;
 
-          const user = await getUserByEmail(email);
+          const user = await db.user.findUnique({ where: { email } });
           if (!user || !user.password) return null;
 
           const passwordsMatch = await bcrypt.compare(password, user.password);

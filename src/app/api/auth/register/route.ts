@@ -1,8 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
+import { NextRequest, NextResponse } from 'next/server';
 
 import { db } from '@/lib/db';
-import { getUserByEmail } from '@/data/user';
 import { RegisterSchema } from '@/validators/auth';
 
 export async function POST(req: NextRequest) {
@@ -17,8 +16,7 @@ export async function POST(req: NextRequest) {
     const { email, password, name, username } = validatedFields.data;
     const passwordHash = await bcrypt.hash(password, 10);
 
-    const existingUser = await getUserByEmail(email);
-
+    const existingUser = await db.user.findUnique({ where: { email } });
     if (existingUser) {
       return NextResponse.json({ message: 'Email already in use!' }, { status: 400 });
     }

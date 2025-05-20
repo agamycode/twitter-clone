@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { auth } from '@/auth';
 import { db } from '@/lib/db';
-import { getBookmarkByUserAndTweet } from '@/data/bookmark';
+import { auth } from '@/auth';
 
 export async function POST(req: NextRequest) {
   try {
@@ -23,7 +22,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Tweet not found' }, { status: 404 });
     }
 
-    const existingBookmark = await getBookmarkByUserAndTweet(userId, tweetId);
+    const existingBookmark = await db.bookmark.findUnique({ where: { userId_tweetId: { userId, tweetId } } });
     if (existingBookmark) {
       await db.bookmark.delete({ where: { userId_tweetId: { userId, tweetId } } });
       return NextResponse.json({ message: 'Removed from your Bookmarks', bookmarked: false });

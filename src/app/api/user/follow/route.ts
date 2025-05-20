@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { NotificationType } from '@prisma/client';
 
 import { db } from '@/lib/db';
 import { auth } from '@/auth';
-import { getFollowByUsers } from '@/data/follow';
-import { NotificationType } from '@prisma/client';
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,7 +23,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'User not found' }, { status: 404 });
     }
 
-    const existingFollow = await getFollowByUsers(followerId, targetUserId);
+    const existingFollow = await db.follow.findUnique({
+      where: { followerId_followingId: { followerId, followingId: targetUserId } }
+    });
     if (existingFollow) {
       await db.follow.delete({ where: { followerId_followingId: { followerId, followingId: targetUserId } } });
       return NextResponse.json({ message: 'Unfollowed successfully' }, { status: 200 });
