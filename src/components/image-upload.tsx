@@ -78,10 +78,10 @@ export const ImageUpload = ({ value, onChange, disabled, variant = 'avatar', cla
                 size='icon'
                 className='absolute top-2 right-2 rounded-full'
                 onClick={removeImage}>
-                <X className='h-4 w-4' />
+                <X className='size-4' />
               </Button>
               <div className='text-white text-center'>
-                <Camera className='h-8 w-8 mx-auto mb-2' />
+                <Camera className='size-8 mx-auto mb-2' />
                 <p>Change cover photo</p>
               </div>
             </div>
@@ -92,7 +92,7 @@ export const ImageUpload = ({ value, onChange, disabled, variant = 'avatar', cla
               <p className='text-muted-foreground'>Drop the image here</p>
             ) : (
               <div className='text-center'>
-                <Camera className='h-8 w-8 mx-auto mb-2' />
+                <Camera className='size-8 mx-auto mb-2' />
                 <p>Add cover photo</p>
               </div>
             )}
@@ -105,7 +105,7 @@ export const ImageUpload = ({ value, onChange, disabled, variant = 'avatar', cla
   return (
     <div
       {...getRootProps()}
-      className={`relative w-24 h-24 rounded-full bg-muted cursor-pointer group overflow-hidden ${className}`}>
+      className={`relative size-24 rounded-full bg-muted cursor-pointer group overflow-hidden ${className}`}>
       <input {...getInputProps()} />
       {preview ? (
         <>
@@ -120,16 +120,16 @@ export const ImageUpload = ({ value, onChange, disabled, variant = 'avatar', cla
             <Button
               variant='secondary'
               size='icon'
-              className='absolute top-0 right-0 rounded-full h-6 w-6'
+              className='absolute top-0 right-0 rounded-full size-6'
               onClick={removeImage}>
-              <X className='h-3 w-3' />
+              <X className='size-3' />
             </Button>
-            <Camera className='h-6 w-6 text-white' />
+            <Camera className='size-6 text-white' />
           </div>
         </>
       ) : (
         <div className='absolute inset-0 flex items-center justify-center'>
-          {isDragActive ? <p className='text-xs text-muted-foreground'>Drop</p> : <Camera className='h-6 w-6' />}
+          {isDragActive ? <p className='text-xs text-muted-foreground'>Drop</p> : <Camera className='size-6' />}
         </div>
       )}
     </div>

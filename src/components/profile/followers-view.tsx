@@ -13,15 +13,7 @@ export const FollowersView = ({ username }: { username: string }) => {
     <div>
       <Header title='Followers' subtitle={`@${username}`} />
       <div className='divide-y'>
-        {isPending ? (
-          <UserListSkeleton />
-        ) : (
-          <>
-            {followers.map((user) => (
-              <UserListItem key={user.id} user={user} />
-            ))}
-          </>
-        )}
+        {isPending ? <UserListSkeleton /> : <UserListItem users={followers} />}
 
         {!isPending && followers.length === 0 && (
           <EmptyPage

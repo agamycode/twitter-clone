@@ -11,18 +11,7 @@ export const ConnectView = () => {
   return (
     <div>
       <Header title='Connect' />
-
-      <div className='divide-y'>
-        {isPending ? (
-          <UserListSkeleton />
-        ) : (
-          <>
-            {users.map((user) => (
-              <UserListItem key={user.id} user={user} />
-            ))}
-          </>
-        )}
-      </div>
+      <div className='divide-y'>{isPending ? <UserListSkeleton /> : <UserListItem users={users} />}</div>
     </div>
   );
 };

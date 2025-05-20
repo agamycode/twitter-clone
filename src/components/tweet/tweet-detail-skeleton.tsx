@@ -1,10 +1,13 @@
 import { Skeleton } from '@/components/ui/skeleton';
+import { Header } from '@/components/layouts/header';
+import { TweetListSkeleton } from '@/components/tweet/tweet-list-skeleton';
 
-export const TweetsListSkeleton = ({ count = 3 }: { count?: number }) => {
+export const TweetDetailSkeleton = () => {
   return (
-    <div className='divide-y'>
-      {Array.from({ length: count }).map((_, i) => (
-        <div key={i} className='p-4 flex space-x-4'>
+    <div>
+      <Header title='Tweet' />
+      <div className='p-4 border-b'>
+        <div className='flex space-x-4'>
           <Skeleton className='size-12 rounded-full' />
           <div className='space-y-2 flex-1'>
             <div className='flex items-center space-x-2'>
@@ -22,7 +25,13 @@ export const TweetsListSkeleton = ({ count = 3 }: { count?: number }) => {
             </div>
           </div>
         </div>
-      ))}
+      </div>
+
+      <div className='p-4 border-b'>
+        <Skeleton className='h-32 w-full' />
+      </div>
+
+      <TweetListSkeleton />
     </div>
   );
 };

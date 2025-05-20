@@ -1,8 +1,9 @@
 'use client';
 
 import { ArrowLeft } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+
+import { Button } from '@/components/ui/button';
 
 interface Props {
   showBackButton?: boolean;
@@ -18,7 +19,7 @@ export const Header = ({ showBackButton = true, title, subtitle }: Props) => {
     <header className='sticky top-0 z-10 flex items-center h-[53px] px-4 bg-background/80 backdrop-blur-md border-b border-border/40'>
       {showBackButton && (
         <div className='min-w-14 flex items-center justify-start'>
-          <Button size='icon' variant='ghost' onClick={() => router.back()} className='rounded-full h-9 w-9'>
+          <Button size='icon' variant='ghost' onClick={() => router.back()} className='rounded-full size-9'>
             <ArrowLeft className='size-5' />
             <span className='sr-only'>Go back</span>
           </Button>

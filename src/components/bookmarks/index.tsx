@@ -3,20 +3,19 @@
 import { useBookmarks } from '@/features/bookmark/queries';
 
 import { Header } from '@/components/layouts/header';
-import { TweetPost } from '@/components/tweet/tweet';
+import { TweetPost } from '@/components/tweet/tweet-post';
 import { EmptyPage } from '@/components/layouts/empty-page';
-import { TweetsListSkeleton } from '@/components/tweet/tweets-list-skeleton';
+import { TweetListSkeleton } from '@/components/tweet/tweet-list-skeleton';
 
 export const BookmarksView = () => {
   const { tweets, isPending } = useBookmarks();
 
   if (isPending) {
-    return <TweetsListSkeleton />;
+    return <TweetListSkeleton />;
   }
   return (
     <div>
       <Header title='Bookmarks' />
-
       <div className='divide-y'>
         {tweets.length ? (
           tweets.map((tweet) => <TweetPost key={tweet.id} tweet={tweet} />)

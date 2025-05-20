@@ -110,12 +110,12 @@ export const Sidebar = () => {
               <DropdownMenuItem onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
                 {theme === 'dark' ? (
                   <>
-                    <Sun className='mr-2 h-4 w-4' />
+                    <Sun className='mr-2 size-4' />
                     Light Mode
                   </>
                 ) : (
                   <>
-                    <Moon className='mr-2 h-4 w-4' />
+                    <Moon className='mr-2 size-4' />
                     Dark Mode
                   </>
                 )}
@@ -123,7 +123,7 @@ export const Sidebar = () => {
               <DropdownMenuSeparator />
               <LogoutButton>
                 <DropdownMenuItem variant='destructive'>
-                  <LogOut className='mr-2 h-4 w-4' />
+                  <LogOut className='mr-2 size-4' />
                   Logout
                 </DropdownMenuItem>
               </LogoutButton>

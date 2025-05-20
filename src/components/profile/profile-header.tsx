@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { format } from 'date-fns';
-import { ArrowLeft, Calendar, LinkIcon, MapPin } from 'lucide-react';
+import { Calendar, LinkIcon, MapPin } from 'lucide-react';
 
 import { useUser } from '@/features/user/queries';
 import { useCurrentUser } from '@/hooks/use-current-user';
@@ -11,8 +11,8 @@ import { useToggleFollow } from '@/features/follow/queries';
 import { useProfileDialog } from '@/store/use-profile-dialog';
 
 import { Button } from '@/components/ui/button';
-import { Skeleton } from '@/components/ui/skeleton';
 import { Header } from '@/components/layouts/header';
+import { ProfileHeaderSkeleton } from '@/components/profile/profile-header-skeleton';
 
 export const ProfileHeader = ({ username }: { username: string }) => {
   const currentUser = useCurrentUser();
@@ -21,39 +21,7 @@ export const ProfileHeader = ({ username }: { username: string }) => {
   const { isPending: isPendingFollow, mutate: toggleFollow } = useToggleFollow();
 
   if (isPending) {
-    return (
-      <div>
-        <div className='sticky top-0 z-10 flex items-center p-4 bg-background/80 backdrop-blur-sm'>
-          <Link href='/' className='mr-6'>
-            <ArrowLeft className='size-5' />
-          </Link>
-          <div>
-            <Skeleton className='h-6 w-32' />
-            <Skeleton className='h-4 w-20 mt-1' />
-          </div>
-        </div>
-        <Skeleton className='w-full h-48' />
-        <div className='px-4 pb-4 pt-2'>
-          <div className='flex justify-between'>
-            <Skeleton className='size-24 rounded-full mt-[-48px] border-4 border-background' />
-            <Skeleton className='h-10 w-28 rounded-full' />
-          </div>
-          <div className='mt-4 space-y-2'>
-            <Skeleton className='h-6 w-48' />
-            <Skeleton className='h-4 w-32' />
-            <Skeleton className='h-4 w-full' />
-            <div className='flex space-x-4 mt-2'>
-              <Skeleton className='h-4 w-32' />
-              <Skeleton className='h-4 w-32' />
-            </div>
-            <div className='flex space-x-4'>
-              <Skeleton className='h-4 w-20' />
-              <Skeleton className='h-4 w-20' />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return <ProfileHeaderSkeleton />;
   }
 
   return (

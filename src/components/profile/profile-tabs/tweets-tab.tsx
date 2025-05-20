@@ -1,14 +1,14 @@
 import { useUserTweets } from '@/features/tweet/queries';
 
-import { TweetPost } from '@/components/tweet/tweet';
+import { TweetPost } from '@/components/tweet/tweet-post';
 import { EmptyPage } from '@/components/layouts/empty-page';
-import { TweetsListSkeleton } from '@/components/tweet/tweets-list-skeleton';
+import { TweetListSkeleton } from '@/components/tweet/tweet-list-skeleton';
 
 export const ProfileTweetsTab = ({ username }: { username: string }) => {
   const { tweets, isPending } = useUserTweets(username);
 
   if (isPending) {
-    return <TweetsListSkeleton />;
+    return <TweetListSkeleton />;
   }
 
   return (

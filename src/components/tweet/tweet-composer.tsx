@@ -48,7 +48,7 @@ export const TweetComposer = () => {
     <div className='pt-1 border-b'>
       <div className='flex space-x-4 px-4'>
         <div className='pt-3 basis-10 grow-0 mr-2'>
-          <div className='size-12 rounded-full bg-muted shrink-0'></div>
+          <div className='size-12 rounded-full bg-muted shrink-0' />
         </div>
         <div className='static basis-0 pt-1 justify-center grow'>
           <Textarea

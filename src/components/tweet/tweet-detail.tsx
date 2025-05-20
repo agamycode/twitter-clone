@@ -2,33 +2,23 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft } from 'lucide-react';
 
 import { useTweet } from '@/features/tweet/queries';
 
+import { Header } from '@/components/layouts/header';
 import { TweetComposer } from '@/components/tweet/tweet-composer';
-import { TweetSkeleton } from '@/components/tweet/tweet-skeleton';
+import { TweetDetailSkeleton } from '@/components/tweet/tweet-detail-skeleton';
 
-interface TweetDetailProps {
-  id: string;
-}
-
-export const TweetDetail = ({ id }: TweetDetailProps) => {
+export const TweetDetail = ({ id }: { id: string }) => {
   const { tweet, isPending } = useTweet(id);
 
   if (isPending) {
-    return <TweetSkeleton />;
+    return <TweetDetailSkeleton />;
   }
 
   return (
     <div>
-      <div className='sticky top-0 z-10 flex items-center p-4 bg-background/80 backdrop-blur-sm'>
-        <Link href='/' className='mr-6'>
-          <ArrowLeft className='size-5' />
-        </Link>
-        <h1 className='font-bold text-xl'>Tweet</h1>
-      </div>
-
+      <Header title='Tweet' />
       <div className='p-4 border-b'>
         <div className='flex space-x-3'>
           <Link href={`/${tweet?.user.username}`} className='shrink-0'>

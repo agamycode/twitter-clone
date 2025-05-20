@@ -2,14 +2,14 @@
 
 import { useTweets } from '@/features/tweet/queries';
 
-import { TweetPost } from '@/components/tweet/tweet';
-import { TweetsListSkeleton } from '@/components/tweet/tweets-list-skeleton';
+import { TweetPost } from '@/components/tweet/tweet-post';
+import { TweetListSkeleton } from '@/components/tweet/tweet-list-skeleton';
 
 export const TweetList = () => {
   const { tweets, isPending } = useTweets();
 
   if (isPending) {
-    return <TweetsListSkeleton />;
+    return <TweetListSkeleton />;
   }
 
   return (

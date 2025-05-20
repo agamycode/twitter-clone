@@ -1,14 +1,14 @@
 import { useLikes } from '@/features/like/queries';
 
-import { TweetPost } from '@/components/tweet/tweet';
+import { TweetPost } from '@/components/tweet/tweet-post';
 import { EmptyPage } from '@/components/layouts/empty-page';
-import { TweetsListSkeleton } from '@/components/tweet/tweets-list-skeleton';
+import { TweetListSkeleton } from '@/components/tweet/tweet-list-skeleton';
 
 export const ProfileLikesTab = () => {
   const { tweets, isPending } = useLikes();
 
   if (isPending) {
-    return <TweetsListSkeleton />;
+    return <TweetListSkeleton />;
   }
 
   return (

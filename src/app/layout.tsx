@@ -5,10 +5,7 @@ import { SessionProvider } from 'next-auth/react';
 import './globals.css';
 
 import { auth } from '@/auth';
-import { Toaster } from '@/components/ui/sonner';
-import { ThemeProvider } from '@/providers/theme-provider';
-import { QueryProvider } from '@/providers/query-provider';
-import { DialogProvider } from '@/providers/dialog-provider';
+import { Providers } from '@/providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,13 +24,7 @@ export default async function RootLayout({
     <SessionProvider session={session}>
       <html lang='en' suppressHydrationWarning>
         <body className={`${inter.className} antialiased`}>
-          <QueryProvider>
-            <ThemeProvider attribute='class' defaultTheme='light' enableSystem disableTransitionOnChange>
-              {children}
-              <Toaster />
-              <DialogProvider />
-            </ThemeProvider>
-          </QueryProvider>
+          <Providers>{children}</Providers>
         </body>
       </html>
     </SessionProvider>

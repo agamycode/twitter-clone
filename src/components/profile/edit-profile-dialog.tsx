@@ -158,7 +158,7 @@ export function EditProfileDialog() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className='flex items-center gap-2'>
-                        <MapPin className='h-4 w-4 text-muted-foreground' />
+                        <MapPin className='size-4 text-muted-foreground' />
                         Location
                       </FormLabel>
                       <FormControl>
@@ -181,7 +181,7 @@ export function EditProfileDialog() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className='flex items-center gap-2'>
-                        <LinkIcon className='h-4 w-4 text-muted-foreground' />
+                        <LinkIcon className='size-4 text-muted-foreground' />
                         Website
                       </FormLabel>
                       <FormControl>
@@ -199,7 +199,7 @@ export function EditProfileDialog() {
                   )}
                 />
                 <div className='flex items-center gap-2 text-sm text-muted-foreground'>
-                  <Calendar className='h-4 w-4' />
+                  <Calendar className='size-4' />
                   <span>Joined {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : ''}</span>
                 </div>
               </div>

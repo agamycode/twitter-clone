@@ -18,7 +18,7 @@ export function RightSidebar() {
       {/* Search - Fixed at top */}
       <div className='p-4 sticky top-0 bg-background z-10'>
         <div className='relative'>
-          <Search className='absolute left-3 top-3 h-4 w-4 text-muted-foreground' />
+          <Search className='absolute left-3 top-3 size-4 text-muted-foreground' />
           <Input placeholder='Search Twitter' className='pl-10 bg-muted border-none rounded-full' />
         </div>
       </div>
