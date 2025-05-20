@@ -119,7 +119,17 @@
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    @apply overscroll-y-none scroll-smooth overflow-y-scroll text-[15px];
+  }
+
+  html,
+  body,
+  main {
+    height: 100%;
+  }
 }
+
 button,
 [role='button'] {
   cursor: pointer;

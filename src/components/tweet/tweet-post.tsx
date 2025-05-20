@@ -114,7 +114,7 @@ export const TweetPost = ({ tweet }: { tweet: Tweet }) => {
               </div>
             )}
 
-            <div className='flex justify-between gap-1 mt-3 max-w-[600px] text-muted-foreground'>
+            <div className='flex justify-between gap-1 mt-3 md:max-w-[600px] text-muted-foreground'>
               <div className='flex-row justify-start flex-1'>
                 <Button variant='ghost' size='sm' className='flex items-center space-x-1 hover:text-primary'>
                   <MessageCircle className='size-4' />

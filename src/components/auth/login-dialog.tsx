@@ -2,6 +2,7 @@
 
 import type React from 'react';
 import { toast } from 'sonner';
+import { Loader } from 'lucide-react';
 import { useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -100,7 +101,14 @@ export function LoginDialog() {
             />
 
             <Button type='submit' className='w-full' disabled={isPending}>
-              {isPending ? 'Signing in...' : 'Sign in'}
+              {isPending ? (
+                <>
+                  <Loader className='size-4 animate-spin' />
+                  Signing in...
+                </>
+              ) : (
+                'Sign in'
+              )}
             </Button>
           </form>
         </Form>
@@ -110,7 +118,12 @@ export function LoginDialog() {
             Don&apos;t have an account? Sign up
           </Button>
 
-          <Button variant='link' className='text-primary'>
+          <Button
+            variant='link'
+            className='text-primary'
+            onClick={() => {
+              toast.info('Password reset functionality will be implemented soon!');
+            }}>
             Forgot password?
           </Button>
         </DialogFooter>

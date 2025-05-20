@@ -2,6 +2,7 @@
 
 import type React from 'react';
 import { toast } from 'sonner';
+import { Loader } from 'lucide-react';
 import { useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -125,7 +126,14 @@ export function RegisterDialog() {
             />
 
             <Button type='submit' className='w-full' disabled={isPending}>
-              {isPending ? 'Creating account...' : 'Sign up'}
+              {isPending ? (
+                <>
+                  <Loader className='size-4 animate-spin' />
+                  Creating account...
+                </>
+              ) : (
+                'Sign up'
+              )}
             </Button>
           </form>
         </Form>
