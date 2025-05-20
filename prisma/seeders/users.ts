@@ -16,7 +16,7 @@ export async function seedUsers() {
       password: await bcrypt.hash('password123', 10),
       name: 'React Ninja',
       bio: 'Frontend developer specializing in React. Building beautiful UIs since 2015.',
-      profileImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=reactninja',
+      profileImage: '/avatar/notion-avatar-1.png',
       website: 'https://reactninja.dev',
       location: 'San Francisco, CA',
       isVerified: true
@@ -27,7 +27,7 @@ export async function seedUsers() {
       password: await bcrypt.hash('password123', 10),
       name: 'Node Master',
       bio: 'Backend developer with Node.js. API architect and performance optimizer.',
-      profileImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=nodemaster',
+      profileImage: '/avatar/notion-avatar-2.png',
       website: 'https://nodemaster.dev',
       location: 'Austin, TX',
       isVerified: true
@@ -38,7 +38,7 @@ export async function seedUsers() {
       password: await bcrypt.hash('password123', 10),
       name: 'Python Enthusiast',
       bio: 'Data scientist and ML engineer. Turning data into insights with Python.',
-      profileImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=pythonista',
+      profileImage: '/avatar/notion-avatar-3.png',
       website: 'https://pythonista.dev',
       location: 'Seattle, WA',
       isVerified: false
@@ -49,7 +49,7 @@ export async function seedUsers() {
       password: await bcrypt.hash('password123', 10),
       name: 'DevOps Guru',
       bio: 'Infrastructure as code advocate. Docker, Kubernetes, and CI/CD pipelines.',
-      profileImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=devopsguru',
+      profileImage: '/avatar/notion-avatar-4.png',
       website: 'https://devopsguru.tech',
       location: 'Portland, OR',
       isVerified: true
@@ -60,7 +60,7 @@ export async function seedUsers() {
       password: await bcrypt.hash('password123', 10),
       name: 'Full Stack Developer',
       bio: 'Jack of all trades, master of some. React, Node, Python, and everything in between.',
-      profileImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=fullstackdev',
+      profileImage: '/avatar/notion-avatar-5.png',
       website: 'https://fullstack.codes',
       location: 'New York, NY',
       isVerified: false
@@ -71,7 +71,7 @@ export async function seedUsers() {
       password: await bcrypt.hash('password123', 10),
       name: 'UI Designer',
       bio: 'Creating beautiful, intuitive interfaces. Design systems enthusiast.',
-      profileImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=uidesigner',
+      profileImage: '/avatar/notion-avatar-6.png',
       website: 'https://uidesigner.design',
       location: 'Los Angeles, CA',
       isVerified: true
@@ -82,7 +82,7 @@ export async function seedUsers() {
       password: await bcrypt.hash('password123', 10),
       name: 'Security Expert',
       bio: 'Keeping your apps secure. Penetration tester and security consultant.',
-      profileImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=securityexpert',
+      profileImage: '/avatar/notion-avatar-7.png',
       website: 'https://securityexpert.io',
       location: 'Washington, DC',
       isVerified: true
