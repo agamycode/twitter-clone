@@ -22,22 +22,22 @@ export async function POST(req: NextRequest) {
     const existingLike = await db.like.findUnique({ where: { userId_tweetId: { userId, tweetId } } });
     if (existingLike) {
       await db.like.delete({ where: { userId_tweetId: { userId, tweetId } } });
-
-      // Decrement the like count
       await db.tweet.update({ where: { id: tweetId }, data: { likeCount: { decrement: 1 } } });
-
+      await db.notification.deleteMany({ where: { userId: tweet.userId, type: 'LIKE', tweetId } });
       return NextResponse.json({ message: 'Tweet Unliked Successfully!' });
     } else {
-      // Like the tweet
       await db.like.create({ data: { userId, tweetId } });
-
-      // Increment the like count
       await db.tweet.update({ where: { id: tweetId }, data: { likeCount: { increment: 1 } } });
-
       // Create notification for the tweet author (if not the same user)
       if (tweet.userId !== userId) {
         await db.notification.create({
-          data: { type: 'LIKE', message: 'liked your tweet', userId: tweet.userId, tweetId, sourceUserId: userId }
+          data: {
+            type: 'LIKE',
+            message: 'liked your tweet',
+            userId: tweet.userId,
+            tweetId,
+            sourceUserId: userId
+          }
         });
       }
 

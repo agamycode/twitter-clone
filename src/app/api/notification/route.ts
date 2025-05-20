@@ -10,8 +10,10 @@ export async function GET() {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
+    const userId = parseInt(session.user.id);
+
     const notifications = await db.notification.findMany({
-      where: { userId: parseInt(session.user.id) },
+      where: { userId },
       orderBy: { createdAt: 'desc' },
       include: {
         user: {
@@ -20,6 +22,15 @@ export async function GET() {
             name: true,
             username: true,
             profileImage: true
+          }
+        },
+        sourceUser: {
+          select: {
+            id: true,
+            name: true,
+            username: true,
+            profileImage: true,
+            isVerified: true
           }
         },
         tweet: true

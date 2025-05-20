@@ -28,11 +28,23 @@ export async function POST(req: NextRequest) {
     });
     if (existingFollow) {
       await db.follow.delete({ where: { followerId_followingId: { followerId, followingId: targetUserId } } });
+      await db.notification.deleteMany({
+        where: {
+          type: NotificationType.FOLLOW,
+          userId: targetUserId,
+          sourceUserId: followerId
+        }
+      });
       return NextResponse.json({ message: 'Unfollowed successfully' }, { status: 200 });
     } else {
       await db.follow.create({ data: { followerId, followingId: targetUserId } });
       await db.notification.create({
-        data: { type: NotificationType.FOLLOW, message: 'followed you', userId: targetUserId, sourceUserId: followerId }
+        data: {
+          type: NotificationType.FOLLOW,
+          message: 'followed you',
+          userId: targetUserId,
+          sourceUserId: followerId
+        }
       });
 
       return NextResponse.json({ message: 'Followed successfully' }, { status: 200 });

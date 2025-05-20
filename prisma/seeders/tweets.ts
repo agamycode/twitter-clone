@@ -206,7 +206,7 @@ export async function seedTweets(users: User[]) {
         await prisma.notification.create({
           data: {
             type: 'LIKE',
-            message: `${user.name || user.username} liked your tweet`,
+            message: `liked your tweet`,
             userId: tweet.userId,
             tweetId: tweet.id,
             sourceUserId: user.id
@@ -243,7 +243,7 @@ export async function seedTweets(users: User[]) {
       await prisma.notification.create({
         data: {
           type: 'FOLLOW',
-          message: `${follow.follower.name || follow.follower.username} followed you`,
+          message: `followed you`,
           userId: user.id,
           sourceUserId: follow.followerId
         }

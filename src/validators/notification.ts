@@ -14,6 +14,11 @@ export const NotificationSchema = z.object({
     username: z.string(),
     profileImage: z.string()
   }),
+  sourceUser: z.object({
+    name: z.string(),
+    username: z.string(),
+    profileImage: z.string()
+  }),
   tweet: z
     .object({
       content: z.string()

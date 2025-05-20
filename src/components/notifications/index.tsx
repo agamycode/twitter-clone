@@ -48,19 +48,19 @@ export const NotificationsView = () => {
                   <div className='mr-3 mt-1'>{getNotificationIcon(notification.type)}</div>
                   <div>
                     <div className='flex items-center space-x-2'>
-                      <Link href={`/${notification.user.username}`} className='shrink-0'>
+                      <Link href={`/${notification.sourceUser.username}`} className='shrink-0'>
                         <div className='size-10 rounded-full overflow-hidden relative'>
                           <Image
                             fill
                             style={{ objectFit: 'cover', borderRadius: '100%' }}
-                            alt={notification.user.name || 'Avatar'}
-                            src={notification.user.profileImage || '/placeholder/placeholder.svg'}
+                            alt={notification.sourceUser.name || 'Avatar'}
+                            src={notification.sourceUser.profileImage || '/placeholder/placeholder.svg'}
                           />
                         </div>
                       </Link>
                       <div>
-                        <Link href={`/${notification.user.username}`} className='font-bold hover:underline'>
-                          {notification.user.name}
+                        <Link href={`/${notification.sourceUser.username}`} className='font-bold hover:underline'>
+                          {notification.sourceUser.name}
                         </Link>
                         <span> {notification.message}</span>
                       </div>
@@ -101,19 +101,19 @@ export const NotificationsView = () => {
                       </div>
                       <div>
                         <div className='flex items-center space-x-2'>
-                          <Link href={`/${notification.user.username}`} className='shrink-0'>
+                          <Link href={`/${notification.sourceUser.username}`} className='shrink-0'>
                             <div className='size-10 rounded-full overflow-hidden relative'>
                               <Image
                                 fill
                                 style={{ objectFit: 'cover', borderRadius: '100%' }}
-                                alt={notification.user.name || 'Avatar'}
-                                src={notification.user.profileImage || '/placeholder/placeholder.svg'}
+                                alt={notification.sourceUser.name || 'Avatar'}
+                                src={notification.sourceUser.profileImage || '/placeholder/placeholder.svg'}
                               />
                             </div>
                           </Link>
                           <div>
-                            <Link href={`/${notification.user.username}`} className='font-bold hover:underline'>
-                              {notification.user.name}
+                            <Link href={`/${notification.sourceUser.username}`} className='font-bold hover:underline'>
+                              {notification.sourceUser.name}
                             </Link>
                             <span> {notification.message}</span>
                           </div>
